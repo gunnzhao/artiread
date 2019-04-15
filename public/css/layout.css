@@ -1,0 +1,54 @@
+html, body{
+    height: 100%;
+    margin:0;
+    padding:0;
+    font-size: 15px;
+}
+
+.setting-menu:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+ }
+
+.setting-menu a {
+    text-decoration-line: none;
+}
+
+.container {
+    min-height: calc(100% - 287px);
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+.article a {
+    text-decoration-line: none;
+}
+
+.subescribe-list {
+    max-height: 700px;
+    overflow: scroll;
+}
+
+.artiread-content {
+    font-size: 16px;
+}
+
+.artiread-content img {
+    max-width: 100%;
+}
+
+.artiread-content p {
+    line-height: 2em;
+}
+
+.artiread-content h1,
+.artiread-content h2,
+.artiread-content h3,
+.artiread-content h4,
+.artiread-content h5,
+.artiread-content h6 {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
