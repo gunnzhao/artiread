@@ -42,6 +42,7 @@ class UpdateArticles extends Command
     {
         $startTime = microtime(true);
 
+        Log::channel('article_update')->info('-----Article update start-----');
         Log::channel('article_update')->info('定时更新任务开始！');
         $websiteId = $this->argument('websiteId');
 
@@ -120,5 +121,6 @@ class UpdateArticles extends Command
         } else {
             Log::channel('article_update')->info('执行了1个站点，总用时：' . ($endTime - $startTime) . '秒');
         }
+        Log::channel('article_update')->info('-----Article update end-----');
     }
 }
