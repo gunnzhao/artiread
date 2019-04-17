@@ -21,8 +21,6 @@ Route::get('/follow-manage', 'FollowManageController@index');
 Route::post('/unread', 'UnreadController@index');
 Route::post('/unread/clean', 'UnreadController@clean');
 
-Route::get('/search/website', 'SearchController@website');
-
 Route::get('/find', 'FindController@index');
 
 Route::get('/avatar/{id}', 'AvatarController@show');

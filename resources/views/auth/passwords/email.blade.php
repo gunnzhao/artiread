@@ -29,6 +29,21 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="inputCaptcha" class="col-sm-3 col-form-label text-right">验证码</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control{{ $errors->has('captcha') ? ' is-invalid' : '' }}" name="captcha" id="inputCaptcha" value="{{ old('captcha') }}">
+                                @if ($errors->has('captcha'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('captcha') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                            <div class="col-sm-5">
+                                <img src="{{ captcha_src() }}" style="cursor:pointer" onclick="this.src='{{ captcha_src() }}' + Math.random()">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <div class="col-sm-7 offset-sm-3">
                                 <button type="submit" class="btn btn-primary">发送重置密码链接</button>
                             </div>
