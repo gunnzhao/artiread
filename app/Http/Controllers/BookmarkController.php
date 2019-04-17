@@ -117,6 +117,9 @@ class BookmarkController extends Controller
         ]);
 
         if ($bookmark) {
+            $article->increment('mark');
+            $article->save();
+
             return response()->json(['status' => 0]);
         }
         return response()->json(['status' => -1, 'msg' => '收藏失败，请稍后重试。']);
@@ -135,6 +138,8 @@ class BookmarkController extends Controller
         Bookmark::where([
             ['user_id', Auth::user()->id], ['article_id', $request->input('article_id')]
         ])->delete();
+
+        Article::where('id', $request->input('article_id'))->decrement('mark');
 
         return response()->json(['status' => 0]);
     }
