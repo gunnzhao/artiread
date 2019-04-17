@@ -29,6 +29,9 @@ class ArticleController extends Controller
             }
         }
 
+        $article->increment('click');
+        $article->save();
+
         return redirect($article->link . '?utm_source=' . env('APP_HOST') . '&utm_medium=' . env('APP_HOST'));
     }
 
