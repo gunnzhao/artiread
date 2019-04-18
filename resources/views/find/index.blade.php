@@ -55,8 +55,10 @@
                     @endif
                 @endforeach
 
-                @component('components.pagination', ['link' => $link, 'nowPage' => $nowPage, 'overagePage' => $overagePage])
-                @endcomponent
+                <div class="bg-white py-3 px-4">
+                    @component('components.pagination', ['link' => $link, 'nowPage' => $nowPage, 'overagePage' => $overagePage])
+                    @endcomponent
+                </div>
             @else
                 <div class="bg-white py-3 px-4">
                     <div class="alert alert-danger" role="alert">找不到您想要的结果。</div>
