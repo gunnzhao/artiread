@@ -80,27 +80,26 @@
 
         <footer class="w-100 pt-4 bg-dark text-white">
             <div class="container">
-                <div class="row">
-                    <div class="col-4">
-                        <h6 class="py-1">关于 <i class="fa fa-rss-square" aria-hidden="true"></i> {{ config('app.name', 'Artiread') }}</h6>
-                        <p>Reading是一个......</p>
+                <div class="row py-2">
+                    <div class="col-3">
+                        <h6 class="py-1 text-center">关于 {{ config('app.name', 'Artiread') }}</h6>
+                        <p style="line-height:1.7em;font-size:14px;">Artiread 是一个用来订阅站点文章的网站，将想要关注的博客、资讯、文集等网站聚合在一起，便于阅读。</p>
                     </div>
-                    <div class="col-4">
-                        <h6 class="py-1">感谢</h6>
+
+                    <div class="col-4 offset-1 text-center">
+                        <h6 class="py-1">站点信息</h6>
                         <ul class="list-unstyled text-small">
-                            <li><a class="text-muted" href="#">ApiCat</a></li>
-                            <li><a class="text-muted" href="#">Laravel</a></li>
-                            <li><a class="text-muted" href="#">Bootstrap</a></li>
-                            <li><a class="text-muted" href="#">Font Awesome</a></li>
+                            <li class="py-1"><a class="text-muted" href="/about">关于本站</a></li>
+                            <li class="py-1"><a class="text-muted" href="/contact">联系站长</a></li>
+                            <li class="py-1 text-muted">QQ群 32542534</li>
                         </ul>
                     </div>
-                    <div class="col-4">
+
+                    <div class="col-4 text-center">
                         <h6 class="py-1">其他信息</h6>
                         <ul class="list-unstyled text-small">
-                            <li class="py-1"><a class="text-muted" href="#">软件外包</a></li>
-                            <li class="py-1"><a class="text-muted" href="#">商务合作</a></li>
-                            <li class="py-1"><a class="text-muted" href="#">联系站长</a></li>
-                            <li class="py-1"><a class="text-muted" href="#">QQ群 123456789</a></li>
+                            <li class="py-1"><a class="text-muted" href="/contact">软件外包</a></li>
+                            <li class="py-1"><a class="text-muted" href="/contact">商务合作</a></li>
                         </ul>
                     </div>
                 </div>
