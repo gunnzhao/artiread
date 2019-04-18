@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', '欢迎来到Artiread')
+
 @section('content')
 <div class="container">
     <div class="row my-4">
@@ -35,6 +37,8 @@
 
                 @component('components.pagination', ['link' => $link, 'nowPage' => $nowPage, 'overagePage' => $overagePage])
                 @endcomponent
+
+                
             </div>
         </div>
 

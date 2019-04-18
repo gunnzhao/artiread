@@ -3,14 +3,15 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="">
+        <meta name="description" content="一个用来订阅站点文章的网站，将想要关注的博客、资讯、文集等网站聚合在一起，便于阅读。">
+        <meta name="keywords" content="RSS,聚合阅读,文章订阅,文章阅读">
+        <meta name="author" content="artiread.com">
         <link rel="icon" href="{{ config('app.url') }}/favicon.ico">
 
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Artiread') }}</title>
+        <title>{{ config('app.name', 'Artiread') }} - @yield('title')</title>
 
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', '关于Artiread')
+
 @section('content')
 <div class="container">
     <div class="row my-4">
