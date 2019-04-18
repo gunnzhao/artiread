@@ -44,12 +44,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/find">发现</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">关于</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">反馈</a>
-                        </li>
                     </ul>
 
                     @guest
