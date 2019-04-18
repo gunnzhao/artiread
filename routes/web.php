@@ -13,6 +13,10 @@
 
 Route::get('/', 'WelcomeController@index');
 
+Route::get('/about', function() {
+    return view('about');
+});
+
 Auth::routes();
 
 Route::get('/follow', 'FollowController@index');
