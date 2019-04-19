@@ -9,7 +9,6 @@ use Auth;
 use App\Repositries\LocationRepositry;
 use App\Rules\ValidatePassword;
 
-
 class SettingController extends Controller
 {
     protected $locationRepositry;
