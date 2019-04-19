@@ -34,7 +34,7 @@
                         @foreach ($articles as $article)
                             <li class="list-group-item px-0 py-5">
                                 <h5 class="mb-3">
-                                    <a href="{{ $article->link }}?utm_source={{ env('APP_HOST') }}&utm_medium={{ env('APP_HOST') }}" target="_blank" class="text-dark">{{ $article->title }}</a>
+                                    <a href="/article/{{ $article->id }}" target="_blank" class="text-dark">{{ $article->title }}</a>
                                 </h5>
                                 <p class="text-secondary">{{ $article->publish_time->format('Y年m月d日') }}</p>
                                 <p class="text-secondary">{{ $article->description }}</p>
@@ -43,7 +43,7 @@
 
                         <li class="list-group-item px-0">
                             <p class="text-secondary text-center">仅显示最近{{ $articles->count() }}篇文章</p>
-                    </li>
+                        </li>
                     @endif
                 </ul>
             </div>
