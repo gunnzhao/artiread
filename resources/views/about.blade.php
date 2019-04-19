@@ -9,15 +9,15 @@
             <h3 class="mb-4">关于Artiread</h3>
 
             <p style="line-height:2em;">
-                Artiread是一个用来订阅站点文章的网站，基于RSS和爬虫。将自己想要关注的博客、资讯、文集等网站进行订阅，每次这些站点的内容更新后，就会自动提醒你。Artiread将这些站点聚合在一起，这样只用通过一个地方就能知道所有站点的更新状况了。
+                Artiread是一个用来订阅站点文章的网站，基于RSS和爬虫。将自己想要关注的博客、资讯、文集等网站进行订阅，每次这些站点的内容更新后，就会自动提醒未读。Artiread将这些站点聚合在一起，这样只用通过一个地方就能知道所有站点的更新状况。
             </p>
 
             <p style="line-height:2em;">
-                Artiread是<code>Arti</code>cle和<code>read</code>的组合，参考自Instagram和Smartisan这些起名的方式。
+                Artiread是<code>Arti</code>cle和<code>read</code>的组合，参考自Instagram和Smartisan的起名方式。
             </p>
 
             <p style="line-height:2em;">
-                网上相关的订阅工具很多，大多数RSS的订阅工具都是将文章在自己的界面里做了渲染，字体、布局、颜色等这些和原作者在自己网站里的风格完全不一样了。还有一些站点没有严格遵循RSS的协议，内容有比较严重的问题，获取的内容会出现不完整，甚至没有内容的问题。
+                网上相关的订阅工具有很多，大多数RSS订阅工具都是将文章在自己的界面里做了渲染，字体、布局、颜色等这些和原作者在自己网站里的风格完全不一样了。还有一些站点没有严格遵循RSS的协议，内容有比较严重的问题，获取的内容会出现不完整，甚至没有内容。
             </p>
 
             <p style="line-height:2em;">
