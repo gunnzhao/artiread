@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
     <div class="row my-4">
-        <div class="col-12">
+        <div class="col-sm-12">
             <div class="bg-white py-3 px-5">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item px-0">

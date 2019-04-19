@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
     <div class="row my-4">
-        <div class="col-8 offset-2">
+        <div class="col-sm-8 offset-sm-2">
             <div class="card">
                 <div class="card-header">用户登录</div>
                 <div class="card-body">

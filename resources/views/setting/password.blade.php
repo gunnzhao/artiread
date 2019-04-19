@@ -5,11 +5,11 @@
 @section('content')
 <div class="container">
     <div class="row my-4">
-        <div class="col-3">
+        <div class="col-sm-3">
             @component('components.settingsidebar', ['item' => 'password'])
             @endcomponent
         </div>
-        <div class="col-9">
+        <div class="col-sm-9">
             <div class="card">
                 <h6 class="card-header"><i class="fa fa-lock" aria-hidden="true"></i> 修改密码</h6>
                 <div class="card-body">

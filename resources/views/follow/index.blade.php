@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
     <div class="row my-4">
-		<div class="col-3">
+		<div class="col-sm-3">
             <div class="bg-white">
                 <div class="py-3 px-4 border-bottom d-flex">
 					<h6 class="m-0 mr-auto" style="padding-top: 3px;">我的订阅</h6>
@@ -44,11 +44,11 @@
             </div>
 		</div>
 		
-        <div class="col-9">
+        <div class="col-sm-9">
             <div class="bg-white">
                 <div class="py-3 px-4">
 					<div class="row">
-						<div class="col-4 pt-2">
+						<div class="col-sm-4 pt-2">
                             <a href="/follow{{ $websiteId > 0 ? '?w=' . $websiteId : '?t=all' }}" class="btn btn-outline-primary btn-sm{{ $type == 'all' ? ' active' : '' }}" role="button" aria-pressed="true">全部</a>
                             <a href="/follow{{ $websiteId > 0 ? '?w=' . $websiteId . '&' : '?' }}t=unread" class="btn btn-outline-primary btn-sm{{ $type == 'unread' ? ' active' : '' }}" role="button" aria-pressed="true">
                                 未读
@@ -72,7 +72,7 @@
                             @endif
 						</div>
 
-						<div class="col-5 offset-3">
+						<div class="col-sm-5 offset-sm-3">
                             @if ($websiteId > 0)
                                 <form action="/follow" method="GET" name="searchArticle">
                                     <div class="input-group">

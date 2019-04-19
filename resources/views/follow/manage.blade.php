@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
     <div class="row my-4">
-        <div class="col-12">
+        <div class="col-sm-12">
             <div class="bg-white py-3 px-5 mb-3">
                 <form action="/follow-manage" method="GET" name="searchFeed">
                     <div class="input-group">
@@ -28,14 +28,14 @@
                     @foreach ($feeds as $feed)
                         <div class="bg-white py-3 px-4" style="margin-top:1px;">
                             <div class="row">
-                                <div class="col-8">
+                                <div class="col-sm-8">
                                     <a href="/website/{{ $feed->websites->id }}"><strong class="text-dark">{{ $feed->websites->name }}</strong></a>
                                     <small class="text-secondary">
                                         <span id="followers-{{ $feed->websites->id }}">{{ $feed->websites->followers }}</span> 人订阅 |
                                         上次更新于{{ $feed->websites->last_update_time->diffForHumans() }}
                                     </small>
                                 </div>
-                                <div class="col-4 text-right">
+                                <div class="col-sm-4 text-right">
                                     <a href="/follow?w={{ $feed->websites->id }}" class="btn btn-outline-secondary btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                     <a href="{{ $feed->websites->scheme }}://{{ $feed->websites->host }}?utm_source={{ env('APP_HOST') }}&utm_medium={{ env('APP_HOST') }}" class="btn btn-outline-secondary btn-sm" target="_blank">
                                         <i class="fa fa-link" aria-hidden="true"></i>
@@ -49,14 +49,14 @@
                     @foreach ($feeds as $feed)
                         <div class="bg-white py-3 px-4" style="margin-top:1px;">
                             <div class="row">
-                                <div class="col-8">
+                                <div class="col-sm-8">
                                     <a href="/website/{{ $feed->id }}"><strong class="text-dark">{{ $feed->name }}</strong></a>
                                     <small class="text-secondary">
                                         <span id="followers-{{ $feed->id }}">{{ $feed->followers }}</span> 人订阅 |
                                         上次更新于{{ $feed->last_update_time->diffForHumans() }}
                                     </small>
                                 </div>
-                                <div class="col-4 text-right">
+                                <div class="col-sm-4 text-right">
                                     <a href="/follow?w={{ $feed->id }}" class="btn btn-outline-secondary btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                     <a href="{{ $feed->scheme }}://{{ $feed->host }}?utm_source={{ env('APP_HOST') }}&utm_medium={{ env('APP_HOST') }}" class="btn btn-outline-secondary btn-sm" target="_blank">
                                         <i class="fa fa-link" aria-hidden="true"></i>

@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
     <div class="row my-4">
-        <div class="col-12">
+        <div class="col-sm-12">
             <div class="bg-white py-3 px-5 mb-3">
                 <form action="/find" method="GET" name="searchWebsite">
                     <div class="input-group">
@@ -23,13 +23,13 @@
                 @foreach ($results as $result)
                     <div class="bg-white py-3 px-4" style="margin-top:1px;">
                         <div class="row">
-                            <div class="col-10 pl-5 border-right">
+                            <div class="col-sm-10 pl-5 border-right">
                                 <a href="/website/{{ $result->id }}"><strong class="text-dark" style="font-size:18px;">{{ $result->name }}</strong></a>
                                 <a href="{{ $result->scheme }}://{{ $result->host }}?utm_source={{ env('APP_HOST') }}&utm_medium={{ env('APP_HOST') }}" target="_blank"><small class="text-secondary">{{ $result->host }}</small></a>
                                 <p class="mb-0 mt-2 text-secondary">{{ $result->description }}</p>
                             </div>
 
-                            <div class="col-2">
+                            <div class="col-sm-2">
                                 <div class="text-center">
                                     <a href="{{ $result->scheme }}://{{ $result->host }}?utm_source={{ env('APP_HOST') }}&utm_medium={{ env('APP_HOST') }}" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="访问站点">
                                         <i class="fa fa-link" aria-hidden="true"></i>
