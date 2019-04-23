@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
     <div class="row my-4">
-        <div class="col-sm-12">
+        <div class="col-md-12">
             <div class="bg-white py-3 px-5 mb-3">
                 <h3>{{ $article->title }}</h3>
 

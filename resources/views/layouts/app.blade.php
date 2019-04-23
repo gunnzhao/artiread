@@ -76,12 +76,12 @@
         <footer class="w-100 pt-4 bg-dark text-white">
             <div class="container">
                 <div class="row py-2">
-                    <div class="col-sm-3">
+                    <div class="col-md-3">
                         <h6 class="py-1 text-center">关于 {{ config('app.name', 'Artiread') }}</h6>
                         <p style="line-height:1.7em;font-size:14px;">Artiread 是一个用来订阅站点文章的网站，将想要关注的博客、资讯、文集等网站聚合在一起，便于阅读。</p>
                     </div>
 
-                    <div class="col-sm-4 offset-sm-1 text-center">
+                    <div class="col-md-4 offset-md-1 text-center">
                         <h6 class="py-1">站点信息</h6>
                         <ul class="list-unstyled text-small">
                             <li class="py-1"><a class="text-muted" href="/about">关于本站</a></li>
@@ -90,7 +90,7 @@
                         </ul>
                     </div>
 
-                    <div class="col-sm-4 text-center">
+                    <div class="col-md-4 text-center">
                         <h6 class="py-1">其他信息</h6>
                         <ul class="list-unstyled text-small">
                             <li class="py-1"><a class="text-muted" href="/contact">软件外包</a></li>

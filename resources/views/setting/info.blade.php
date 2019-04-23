@@ -5,11 +5,11 @@
 @section('content')
 <div class="container">
     <div class="row my-4">
-        <div class="col-sm-3">
+        <div class="col-md-3">
             @component('components.settingsidebar', ['item' => 'info'])
             @endcomponent
         </div>
-        <div class="col-sm-9">
+        <div class="col-md-9">
             <div class="card">
                 <h6 class="card-header"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 修改资料</h6>
                 <div class="card-body">

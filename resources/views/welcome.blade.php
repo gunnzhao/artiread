@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
     <div class="row my-4">
-        <div class="col-sm-9">
+        <div class="col-md-9">
             <div class="bg-white">
                 <div class="py-3 px-4">
                     <a href="/?t=new" class="btn btn-outline-primary btn-sm{{ $type == 'new' ? ' active' : '' }}" role="button" aria-pressed="true" data-toggle="tooltip" data-placement="top" title="发布时间排序">最新</a>
@@ -42,7 +42,7 @@
             </div>
         </div>
 
-        <div class="col-sm-3">
+        <div class="col-md-3">
             <div class="bg-white">
                 <div class="py-2 px-3 border-bottom">热门订阅</div>
                 <ul class="list-group list-group-flush">
