@@ -87,11 +87,17 @@ $(function(){
                     _this.addClass('btn-outline-secondary');
                     _this.html('已订阅');
 
+                    _this.attr('data-original-title', '取消订阅该站点');
+                    _this.tooltip('hide');
+
                     followers++;
                 } else {
                     _this.removeClass('btn-outline-secondary');
                     _this.addClass('btn-outline-success');
                     _this.html('订阅');
+
+                    _this.attr('data-original-title', '订阅该站点');
+                    _this.tooltip('hide');
 
                     followers--;
                 }
