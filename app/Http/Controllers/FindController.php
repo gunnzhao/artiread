@@ -90,7 +90,7 @@ class FindController extends Controller
             $feed->setWebsiteId($website->id);
             $feed->setLastUpdateTime($website->last_update_time);
             $feed->item->saveAll();
-            return view('find/index', $this->genVal());
+            return redirect('/website/' . $website->id);
         }
 
         if (!Auth::check()) {
