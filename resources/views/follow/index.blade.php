@@ -187,7 +187,7 @@ $(function(){
                             if (res.data[j].website_id == website_id || website_id == 0) {
                                 $('#total-unread').html(total_unread + res.data[j].count);
 
-                                if (total_unread == 0) {
+                                if (total_unread > 0) {
                                     $('#total-unread').removeClass('d-none');
                                 }
                             }
