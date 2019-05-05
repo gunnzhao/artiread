@@ -11,7 +11,7 @@ use App\Repositries\UserWebsiteRepositry;
 
 class FollowManageController extends Controller
 {
-    protected $websiteRepositry;
+    protected $userWebsiteRepositry;
 
     /**
      * 当前页数
