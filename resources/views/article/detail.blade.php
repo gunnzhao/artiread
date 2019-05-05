@@ -12,7 +12,7 @@
                 <p class="text-secondary">
                     <a href="/website/{{ $article->website_id }}" class="text-secondary">{{ $article->website->name }}</a>
                     {{ $article->publish_time->format('Y年m月d日') }}
-                    <a href="/article/{{ $article->id }}">原文链接</a>
+                    <a href="/article/{{ $article->id }}" target="_blank">原文链接</a>
                 </p>
 
                 <div class="artiread-content">
@@ -20,7 +20,7 @@
                 </div>
 
                 <p>
-                    <a href="/article/{{ $article->id }}">原文链接</a>
+                    <a href="/article/{{ $article->id }}" target="_blank">原文链接</a>
                 </p>
             </div>
         </div>
