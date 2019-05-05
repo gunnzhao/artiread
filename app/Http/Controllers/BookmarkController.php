@@ -125,7 +125,7 @@ class BookmarkController extends Controller
         return response()->json(['status' => -1, 'msg' => '收藏失败，请稍后重试。']);
     }
 
-    public function destory(Request $request)
+    public function destroy(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'article_id' => 'required|integer|min:1',

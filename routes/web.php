@@ -38,7 +38,7 @@ Route::get('/article/{id}', 'ArticleController@index');
 
 Route::get('/bookmark', 'BookmarkController@index');
 Route::post('/bookmark/add', 'BookmarkController@store');
-Route::post('/bookmark/delete', 'BookmarkController@destory');
+Route::post('/bookmark/delete', 'BookmarkController@destroy');
 
 Route::post('/website/follow', 'WebsiteFollowController@index');
 Route::get('/website/{id}', 'WebsiteController@show');
