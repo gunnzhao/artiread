@@ -44,6 +44,10 @@
                                 </div>
                             </div>
                         </div>
+                        
+                        @if ($loop->iteration == $pageNum)
+                            @break
+                        @endif
                     @endforeach
                 @else
                     @foreach ($feeds as $feed)
@@ -65,6 +69,10 @@
                                 </div>
                             </div>
                         </div>
+                        
+                        @if ($loop->iteration == $pageNum)
+                            @break
+                        @endif
                     @endforeach
                 @endif
 
