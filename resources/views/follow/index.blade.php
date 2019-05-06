@@ -212,12 +212,15 @@ $(function(){
 
     $('.bookmark').click(function() {
         var _this = $(this);
+        _this.prop('disabled', true);
+
         $.post('/bookmark/add', {'_token': $('input[name="_token"]').val(), 'article_id': _this.data('index')}, function(res) {
             if (res.status == 0) {
                 _this.removeClass('btn-outline-secondary');
                 _this.addClass('btn-outline-success');
-                _this.prop('disabled', true);
                 _this.tooltip('hide');
+            } else {
+                _this.prop('disabled', false);
             }
         });
     });
