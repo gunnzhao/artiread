@@ -23,7 +23,7 @@
     <body class="bg-light">
         <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom box-shadow">
             <div class="container">
-                <a class="navbar-brand mb-0 h1" href="{{ url('/') }}">
+                <a class="navbar-brand mb-0 h1" href="{{ Auth::check() ? '/follow' : url('/') }}">
                     <i class="fa fa-rss-square" aria-hidden="true"></i> {{ config('app.name', 'Artiread') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
