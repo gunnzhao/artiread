@@ -31,7 +31,7 @@
 
                             <div class="col-md-2">
                                 <div class="text-center">
-                                    <a href="{{ $result->scheme }}://{{ $result->host }}?utm_source={{ env('APP_HOST') }}&utm_medium={{ env('APP_HOST') }}" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="访问站点">
+                                    <a href="{{ $result->scheme }}://{{ $result->host }}?utm_source={{ env('APP_HOST') }}&utm_medium={{ env('APP_HOST') }}" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="访问站点" target="_blank">
                                         <i class="fa fa-link" aria-hidden="true"></i>
                                     </a>
                                     @auth
