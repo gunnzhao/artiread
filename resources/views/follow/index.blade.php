@@ -170,24 +170,27 @@ $(function(){
             $.post('/unread', {'_token': $('input[name="_token"]').val(), 'w': pull_list[i]}, function(res) {
                 if (res.status == 0 && res.data.length > 0) {
                     for (j = 0; j < res.data.length; j++) {
-                        unread_num = new Number($('#unread-' + res.data[j].website_id).html());
-                        $('#unread-' + res.data[j].website_id).html(unread_num + res.data[j].count);
+                        unread_num = $('#unread-' + res.data[j].website_id).html();
+                        if (unread_num != '...') {
+                            unread_num = new Number(unread_num);
 
-                        if (unread_num == 0) {
-                            $('#unread-' + res.data[j].website_id).removeClass('d-none');
-                            
-                            href = $('#unread-' + res.data[j].website_id).parent().attr('href');
-                            $('#unread-' + res.data[j].website_id).parent().attr('href', href + '&t=unread');
+                            $('#unread-' + res.data[j].website_id).html(unread_num + res.data[j].count);
+                            if (unread_num == 0) {
+                                $('#unread-' + res.data[j].website_id).removeClass('d-none');
+                                
+                                href = $('#unread-' + res.data[j].website_id).parent().attr('href');
+                                $('#unread-' + res.data[j].website_id).parent().attr('href', href + '&t=unread');
+                            }
                         }
 
-                        total_unread = $('#total-unread').html();
-                        if (total_unread != '...') {
-                            total_unread = new Number(total_unread);
+                        if (res.data[j].website_id == website_id || website_id == 0) {
+                            total_unread = $('#total-unread').html();
+                            if (total_unread != '...') {
+                                total_unread = new Number(total_unread);
 
-                            if (res.data[j].website_id == website_id || website_id == 0) {
                                 $('#total-unread').html(total_unread + res.data[j].count);
 
-                                if (total_unread > 0) {
+                                if (total_unread == 0) {
                                     $('#total-unread').removeClass('d-none');
                                 }
                             }

@@ -9,7 +9,7 @@
             <div class="bg-white py-3 px-5 mb-3">
                 <form action="/find" method="GET" name="searchWebsite">
                     <div class="input-group">
-                        <input type="text" name="q" class="form-control" placeholder="输入网站名称或Rss地址" aria-label="输入网站名称或Rss地址" aria-describedby="basic-addon2" value="{{ $keywords ? $keywords : '' }}">
+                        <input type="text" name="q" class="form-control" placeholder="输入网站名称或RSS地址" aria-label="输入网站名称或RSS地址" aria-describedby="basic-addon2" value="{{ $keywords ? $keywords : '' }}">
                         <div class="input-group-append">
                             <button class="btn btn-primary" type="submit">查找</button>
                         </div>
