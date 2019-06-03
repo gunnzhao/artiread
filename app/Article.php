@@ -12,7 +12,8 @@ class Article extends Model
      * @var array
      */
     protected $fillable = [
-        'website_id', 'link_md5', 'link', 'title', 'mark', 'description', 'content', 'publish_time', 'status',
+        'website_id', 'link_md5', 'link', 'title', 'cover_pic', 'mark',
+        'description', 'content', 'publish_time', 'status',
     ];
 
     protected $dates = [

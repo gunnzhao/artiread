@@ -6,6 +6,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
 use AthosHun\HTMLFilter\Configuration;
 use AthosHun\HTMLFilter\HTMLFilter;
+use DOMWrap\Document;
 use App\Article;
 use App\UserWebsite;
 use App\Website as WebsiteModel;
@@ -35,11 +36,15 @@ class Item
 
         $config = new Configuration();
         $filter = new HTMLFilter();
+        $doc = new Document();
 
         $list = [];
         foreach ($this->data as $item) {
+            $doc->html($item->get_content());
+
             $list[] = [
                 'title' => $item->get_title(),
+                'cover_pic' => $doc->find('img')->attr('src'),
                 'link' => $item->get_permalink(),
                 'description' => Str::limit($filter->filter($config, $item->get_content()), 300),
                 'publish_time' => $item->get_date('Y年m月d日 H点i分')
@@ -60,6 +65,7 @@ class Item
 
         $config = new Configuration();
         $filter = new HTMLFilter();
+        $doc = new Document();
 
         $updateTime = 0;
         $insertNum = 0;
@@ -79,9 +85,12 @@ class Item
                 continue;
             }
 
+            $doc->html($item->get_content());
+
             $data['website_id'] = $this->rss->getWebsiteId();
             $data['link'] = $item->get_permalink();
             $data['title'] = $item->get_title();
+            $data['cover_pic'] = $doc->find('img')->attr('src');
             $data['description'] = Str::limit($filter->filter($config, $item->get_content()), 300);
             $data['content'] = $item->get_content();
             $data['publish_time'] = $item->get_date('Y-m-d H:i:s');
