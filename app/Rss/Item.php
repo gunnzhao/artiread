@@ -7,6 +7,7 @@ use Illuminate\Support\Carbon;
 use AthosHun\HTMLFilter\Configuration;
 use AthosHun\HTMLFilter\HTMLFilter;
 use DOMWrap\Document;
+use GuzzleHttp\Client;
 use App\Article;
 use App\UserWebsite;
 use App\Website as WebsiteModel;
@@ -85,12 +86,10 @@ class Item
                 continue;
             }
 
-            $doc->html($item->get_content());
-
             $data['website_id'] = $this->rss->getWebsiteId();
             $data['link'] = $item->get_permalink();
             $data['title'] = $item->get_title();
-            $data['cover_pic'] = $doc->find('img')->attr('src');
+            $data['cover_pic'] = '';
             $data['description'] = Str::limit($filter->filter($config, $item->get_content()), 300);
             $data['content'] = $item->get_content();
             $data['publish_time'] = $item->get_date('Y-m-d H:i:s');
@@ -98,6 +97,30 @@ class Item
             if (Article::where('link_md5', md5($item->get_permalink()))->first()) {
                 Article::where('link_md5', md5($item->get_permalink()))->update($data);
             } else {
+                // 新文章记录，检查是否有文章封面图片进行保存
+                $doc->html($item->get_content());
+                $src = $doc->find('img')->attr('src');
+                if ($src) {
+                    $client = new Client([
+                        'timeout' => 1,
+                        'headers' => [
+                            'User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36'
+                        ],
+                    ]);
+
+                    try {
+                        $response = $client->request('GET', $src);
+
+                        if ($response->getStatusCode() == 200) {
+                            list($width, $height, $type) = getimagesizefromstring($response->getBody());
+                            // 封面图片必须是jpg或png图片，且宽度不能小于130像素，高度不能小于83像素。
+                            if (in_array($type, [2, 3]) and $width >= 130 and $height >= 83) {
+                                $data['cover_pic'] = $src;
+                            }
+                        }
+                    } catch (\Throwable $e) {}
+                }
+
                 $data['link_md5'] = md5($item->get_permalink());
                 Article::create($data);
             }
