@@ -52,3 +52,12 @@ html, body{
     margin-top: 1em;
     margin-bottom: 1em;
 }
+
+.cover-pic {
+    width: 195px;
+    height: 125px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    overflow: hidden;
+}

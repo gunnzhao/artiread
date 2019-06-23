@@ -18,13 +18,19 @@
                             <h5>
                                 <a href="/article/{{ $record->id }}" target="_blank" class="text-dark">{{ $record->title }}</a>
                             </h5>
+
                             <p>
                                 <small class="text-secondary">
                                     <a href="/website/{{ $record->website->id }}">{{ $record->website->name }}</a>
                                     {{ $record->publish_time->diffForHumans() }}
                                 </small>
                             </p>
+
                             <p class="mb-0" style="line-height:25px;">
+                                @if ($record->cover_pic)
+                                    <span style="background-image:url({{ $record->cover_pic }})" class="float-left cover-pic mr-3"></span>
+                                @endif
+
                                 <a href="/article/{{ $record->id }}" target="_blank" class="text-secondary">{{ $record->description }}</a>
                             </p>
                         </li>

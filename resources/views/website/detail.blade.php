@@ -33,6 +33,10 @@
                     @if ($articles->count() > 0)
                         @foreach ($articles as $article)
                             <li class="list-group-item px-0 py-5">
+                                @if ($article->cover_pic)
+                                    <span style="background-image:url({{ $article->cover_pic }})" class="float-right cover-pic ml-3"></span>
+                                @endif
+
                                 <h5 class="mb-3">
                                     <a href="/article/{{ $article->id }}" target="_blank" class="text-dark">{{ $article->title }}</a>
                                 </h5>
