@@ -8,6 +8,7 @@ use AthosHun\HTMLFilter\Configuration;
 use AthosHun\HTMLFilter\HTMLFilter;
 use DOMWrap\Document;
 use GuzzleHttp\Client;
+use Image;
 use App\Article;
 use App\UserWebsite;
 use App\Website as WebsiteModel;
@@ -115,7 +116,28 @@ class Item
                             list($width, $height, $type) = getimagesizefromstring($response->getBody());
                             // 封面图片必须是jpg或png图片，且宽度不能小于130像素，高度不能小于83像素。
                             if (in_array($type, [2, 3]) and $width >= 130 and $height >= 83) {
-                                $data['cover_pic'] = $src;
+                                $img = Image::make($response->getBody());
+
+                                if ($width > 195) {
+                                    $img->resize(195, null, function ($constraint) {
+                                        $constraint->aspectRatio();
+                                    });
+                                }
+
+                                $filename = $this->rss->getWebsiteId() . '-' . $item->get_date('YmdHis') . ($type == 2 ? '.jpg' : '.png');
+                                $savaPath = storage_path('app/public/cover_img/' . date('Y-m-d') . '/' . $filename);
+
+                                if (!file_exists(storage_path('app/public/cover_img'))) {
+                                    mkdir(storage_path('app/public/cover_img'), 0755);
+                                }
+
+                                if (!file_exists(storage_path('app/public/cover_img/' . date('Y-m-d')))) {
+                                    mkdir(storage_path('app/public/cover_img/' . date('Y-m-d')), 0755);
+                                }
+
+                                $img->save($savaPath, 60);
+
+                                $data['cover_pic'] = $filename;
                             }
                         }
                     } catch (\Throwable $e) {}
