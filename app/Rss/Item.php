@@ -125,19 +125,20 @@ class Item
                                 }
 
                                 $filename = $this->rss->getWebsiteId() . '-' . $item->get_date('YmdHis') . ($type == 2 ? '.jpg' : '.png');
-                                $savaPath = storage_path('app/public/cover_img/' . date('Y-m-d') . '/' . $filename);
+                                $basePath = 'app/public/cover_img/';
+                                $savaPath = date('Y-m-d') . '/' . $filename;
 
-                                if (!file_exists(storage_path('app/public/cover_img'))) {
-                                    mkdir(storage_path('app/public/cover_img'), 0755);
+                                if (!file_exists(storage_path($basePath))) {
+                                    mkdir(storage_path($basePath), 0755);
                                 }
 
-                                if (!file_exists(storage_path('app/public/cover_img/' . date('Y-m-d')))) {
-                                    mkdir(storage_path('app/public/cover_img/' . date('Y-m-d')), 0755);
+                                if (!file_exists(storage_path($basePath . date('Y-m-d')))) {
+                                    mkdir(storage_path($basePath . date('Y-m-d')), 0755);
                                 }
 
-                                $img->save($savaPath, 60);
+                                $img->save(storage_path($basePath . $savaPath), 60);
 
-                                $data['cover_pic'] = $filename;
+                                $data['cover_pic'] = $savaPath;
                             }
                         }
                     } catch (\Throwable $e) {}

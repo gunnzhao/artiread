@@ -112,10 +112,10 @@
                             </p>
 
                             @if ($article->cover_pic)
-                                <span style="background-image:url({{ $article->cover_pic }})" class="float-left cover-pic mr-3"></span>
+                                <span style="background-image:url({{ asset('/storage/cover_img/' . $article->cover_pic) }})" class="float-left cover-pic mr-3"></span>
                             @endif
 
-                            <p style="line-height:25px; height:125px;">
+                            <p style="line-height:25px;{{ $article->cover_pic ? 'height:125px;' : '' }}">
                                 @if ($type == 'unread' or in_array($article->id, $unreadArticleIds))
                                     <a href="/article/{{ $article->id }}?t=unread" target="_blank" class="text-secondary">{{ $article->description }}</a>
                                 @else

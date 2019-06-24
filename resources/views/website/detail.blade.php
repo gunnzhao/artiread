@@ -34,7 +34,7 @@
                         @foreach ($articles as $article)
                             <li class="list-group-item px-0 py-5">
                                 @if ($article->cover_pic)
-                                    <span style="background-image:url({{ $article->cover_pic }})" class="float-right cover-pic ml-3"></span>
+                                    <span style="background-image:url({{ asset('/storage/cover_img/' . $article->cover_pic) }})" class="float-right cover-pic ml-3"></span>
                                 @endif
 
                                 <h5 class="mb-3">

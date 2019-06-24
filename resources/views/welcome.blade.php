@@ -28,7 +28,7 @@
 
                             <p class="mb-0" style="line-height:25px;">
                                 @if ($record->cover_pic)
-                                    <span style="background-image:url({{ $record->cover_pic }})" class="float-left cover-pic mr-3"></span>
+                                    <span style="background-image:url({{ asset('/storage/cover_img/' . $record->cover_pic) }})" class="float-left cover-pic mr-3"></span>
                                 @endif
 
                                 <a href="/article/{{ $record->id }}" target="_blank" class="text-secondary">{{ $record->description }}</a>
