@@ -54,7 +54,7 @@
                     @else
                         <div class="dropdown setting-menu">
                             <a class="dropdown-toggle p-0 text-dark" href="#" id="dropdown01" data-toggle="dropdown" data-hover="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="/{{ Auth::user()->avatar ? Auth::user()->avatar : 'avatar/' . Auth::user()->id }}" style="width:30px;" class="rounded-circle"> {{ Auth::user()->name }}
+                                <img src="/{{ Auth::user()->avatar ? 'storage/avatars/' . Auth::user()->avatar : 'avatar/' . Auth::user()->id }}" style="width:30px;" class="rounded-circle"> {{ Auth::user()->name }}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropdown01">
                                 <a class="dropdown-item" href="/bookmark">我的收藏</a>

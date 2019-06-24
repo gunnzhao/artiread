@@ -13,7 +13,7 @@
             <div class="card">
                 <h6 class="card-header"><i class="fa fa-picture-o" aria-hidden="true"></i> 修改头像</h6>
                 <div class="card-body">
-                    <p><img src="{{ Auth::user()->avatar ? '/' . Auth::user()->avatar : '/avatar/' . Auth::user()->id }}" style="width:300px;" class="img-thumbnail"></p>
+                    <p><img src="{{ Auth::user()->avatar ? '/storage/avatars/' . Auth::user()->avatar : '/avatar/' . Auth::user()->id }}" style="width:300px;" class="img-thumbnail"></p>
                     
                     @if (session('status'))
                         <div class="alert alert-danger" role="alert">{{ session('status') }}</div>

@@ -65,12 +65,12 @@ class SettingController extends Controller
         }
 
         $fileName = Auth::user()->id . '.' . $request->file('avatar')->extension();
-        $path = $request->file('avatar')->storeAs('avatars', $fileName);
+        $path = $request->file('avatar')->storeAs('public/avatars', $fileName);
         if (!$path) {
             return back()->with('status', '上传文件失败，请稍后重试！');
         }
         
-        Auth::user()->avatar = $path;
+        Auth::user()->avatar = $fileName;
         Auth::user()->save();
 
         return back();
