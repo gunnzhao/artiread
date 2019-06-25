@@ -69,6 +69,13 @@ class Item
         $filter = new HTMLFilter();
         $doc = new Document();
 
+        $client = new Client([
+            'timeout' => 2,
+            'headers' => [
+                'User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36'
+            ],
+        ]);
+
         $updateTime = 0;
         $insertNum = 0;
         
@@ -102,13 +109,6 @@ class Item
                 $doc->html($item->get_content());
                 $src = $doc->find('img')->attr('src');
                 if ($src) {
-                    $client = new Client([
-                        'timeout' => 1,
-                        'headers' => [
-                            'User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36'
-                        ],
-                    ]);
-
                     try {
                         $response = $client->request('GET', $src);
 
@@ -137,6 +137,7 @@ class Item
                                 }
 
                                 $img->save(storage_path($basePath . $savaPath), 60);
+                                $img->destroy();
 
                                 $data['cover_pic'] = $savaPath;
                             }
