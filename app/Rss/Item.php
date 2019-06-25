@@ -97,7 +97,6 @@ class Item
             $data['website_id'] = $this->rss->getWebsiteId();
             $data['link'] = $item->get_permalink();
             $data['title'] = $item->get_title();
-            $data['cover_pic'] = '';
             $data['description'] = Str::limit($filter->filter($config, $item->get_content()), 300);
             $data['content'] = $item->get_content();
             $data['publish_time'] = $item->get_date('Y-m-d H:i:s');
@@ -105,6 +104,8 @@ class Item
             if (Article::where('link_md5', md5($item->get_permalink()))->first()) {
                 Article::where('link_md5', md5($item->get_permalink()))->update($data);
             } else {
+                $data['cover_pic'] = '';
+                
                 // 新文章记录，检查是否有文章封面图片进行保存
                 $doc->html($item->get_content());
                 $src = $doc->find('img')->attr('src');
