@@ -18,7 +18,7 @@ class CreateArticlesTable extends Migration
             $table->bigInteger('website_id')->index();
             $table->string('link_md5')->unique();
             $table->string('link', 1024)->comment('原文链接');
-            $table->string('title');
+            $table->string('title', 512);
             $table->integer('mark')->default(0)->comment('收藏量');
             $table->bigInteger('click')->default(0)->comment('点击量');
             $table->string('description', 1024)->comment('简介');
