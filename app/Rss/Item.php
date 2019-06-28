@@ -57,7 +57,7 @@ class Item
 
     public function saveAll()
     {
-        if (!$this->rss->getWebsiteId()) {
+        if (!$this->rss->websiteModel) {
             return false;
         }
 
@@ -94,12 +94,13 @@ class Item
                 continue;
             }
 
-            $data['website_id'] = $this->rss->getWebsiteId();
+            $data['website_id'] = $this->rss->websiteModel->id;
             $data['link'] = $item->get_permalink();
             $data['title'] = $item->get_title();
             $data['description'] = Str::limit($filter->filter($config, $item->get_content()), 300);
             $data['content'] = $item->get_content();
             $data['publish_time'] = $item->get_date('Y-m-d H:i:s');
+            $data['home_display'] = $this->rss->websiteModel->home_display;
 
             if (Article::where('link_md5', md5($item->get_permalink()))->first()) {
                 Article::where('link_md5', md5($item->get_permalink()))->update($data);
@@ -125,7 +126,7 @@ class Item
                                     });
                                 }
 
-                                $filename = $this->rss->getWebsiteId() . '-' . $item->get_date('YmdHis') . ($type == 2 ? '.jpg' : '.png');
+                                $filename = $this->rss->websiteModel->id . '-' . $item->get_date('YmdHis') . ($type == 2 ? '.jpg' : '.png');
                                 $basePath = 'app/public/cover_img/';
                                 $savaPath = date('Y-m-d') . '/' . $filename;
 
@@ -162,16 +163,16 @@ class Item
         }
 
         if ($updateTime > 0) {
-            if ($lastUpdateTime = $this->rss->getLastUpdateTime()) {
+            if ($lastUpdateTime = $this->rss->websiteModel->last_update_time) {
                 $carbonTime = new Carbon($updateTime, 'Asia/Shanghai');
 
                 if ($carbonTime->gt($lastUpdateTime)) {
                     // 如果最新的发布日期比数据库中的站点最后更新日期大，则更新数据表对应字段。
-                    WebsiteModel::where('id', $this->rss->getWebsiteId())->update(['last_update_time' => $updateTime]);
-                    UserWebsite::where('website_id', $this->rss->getWebsiteId())->update(['last_update_time' => $carbonTime]);
+                    WebsiteModel::where('id', $this->rss->websiteModel->id)->update(['last_update_time' => $updateTime]);
+                    UserWebsite::where('website_id', $this->rss->websiteModel->id)->update(['last_update_time' => $carbonTime]);
                 }
             } else {
-                WebsiteModel::where('id', $this->rss->getWebsiteId())->update(['last_update_time' => $updateTime]);
+                WebsiteModel::where('id', $this->rss->websiteModel->id)->update(['last_update_time' => $updateTime]);
             }
         }
 

@@ -27,7 +27,9 @@ class ArticleRepositry
      */
     public function news(int $offset = 0, int $limit = 20)
     {
-        return Article::where('status', 0)->latest('publish_time')->offset($offset)->limit($limit)->get();
+        return Article::where([
+            ['home_display', 1], ['status', 0]
+        ])->latest('publish_time')->offset($offset)->limit($limit)->get();
     }
 
     /**
@@ -40,6 +42,7 @@ class ArticleRepositry
     {
         return Article::where([
             ['publish_time', '>', Carbon::today()],
+            ['home_display', 1],
             ['status', 0]
         ])->latest('click')->offset($offset)->limit($limit)->get();
     }

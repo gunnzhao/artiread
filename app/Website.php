@@ -12,7 +12,8 @@ class Website extends Model
      * @var array
      */
     protected $fillable = [
-        'url', 'host', 'scheme', 'name', 'logo', 'description', 'followers', 'last_update_time', 'status',
+        'url', 'host', 'scheme', 'name', 'logo', 'description', 'followers', 'last_update_time',
+        'home_display', 'status',
     ];
 
     protected $dates = [

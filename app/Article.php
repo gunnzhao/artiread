@@ -13,7 +13,7 @@ class Article extends Model
      */
     protected $fillable = [
         'website_id', 'link_md5', 'link', 'title', 'cover_pic', 'mark',
-        'description', 'content', 'publish_time', 'status',
+        'description', 'content', 'publish_time', 'home_display', 'status',
     ];
 
     protected $dates = [

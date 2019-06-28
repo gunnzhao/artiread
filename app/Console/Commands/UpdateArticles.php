@@ -65,8 +65,7 @@ class UpdateArticles extends Command
                     continue;
                 }
 
-                $feed->setWebsiteId($website->id);
-                $feed->setLastUpdateTime($website->last_update_time);
+                $feed->setWebsiteModel($website);
                 $feed->item->saveAll();
                 Log::channel('article_update')->info('[' . $website->id . ']' . $website->name . ' 更新完成');
             }
@@ -84,8 +83,7 @@ class UpdateArticles extends Command
                         continue;
                     }
 
-                    $feed->setWebsiteId($website->id);
-                    $feed->setLastUpdateTime($website->last_update_time);
+                    $feed->setWebsiteModel($website);
                     $feed->item->saveAll();
                     Log::channel('article_update')->info('[' . $website->id . ']' . $website->name . ' 重试更新完成');
                 }
@@ -109,8 +107,7 @@ class UpdateArticles extends Command
                 return;
             }
 
-            $feed->setWebsiteId($website->id);
-            $feed->setLastUpdateTime($website->last_update_time);
+            $feed->setWebsiteModel($website);
             $feed->item->saveAll();
             Log::channel('article_update')->info('[' . $website->id . ']' . $website->name . ' 更新完成');
         }

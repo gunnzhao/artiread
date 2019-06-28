@@ -13,9 +13,7 @@ class Rss
 
     private $enableCache = false;
 
-    private $websiteId;
-
-    private $lastUpdateTime; // 站点上次更新时间
+    public $websiteModel;
 
     public $website;
 
@@ -44,27 +42,8 @@ class Rss
         return false;
     }
 
-    public function setWebsiteId(int $id)
+    public function setWebsiteModel($website)
     {
-        $this->websiteId = $id;
-    }
-
-    public function getWebsiteId()
-    {
-        return $this->websiteId;
-    }
-
-    public function setLastUpdateTime(Carbon $time)
-    {
-        $this->lastUpdateTime = $time;
-    }
-
-    /**
-     * 获得站点最后更新时间
-     * @return Illuminate\Support\Carbon
-     */
-    public function getLastUpdateTime()
-    {
-        return $this->lastUpdateTime;
+        $this->websiteModel = $website;
     }
 }

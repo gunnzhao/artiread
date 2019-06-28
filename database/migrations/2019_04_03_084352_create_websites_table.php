@@ -23,6 +23,7 @@ class CreateWebsitesTable extends Migration
             $table->string('description', 1024)->comment('简介');
             $table->integer('followers')->default(0)->comment('订阅量');
             $table->integer('last_update_time')->default(0)->index()->comment('最后更新时间');
+            $table->tinyInteger('home_display')->default(1)->comment('是否在首页显示(0否 1是)');
             $table->tinyInteger('status')->default(0)->comment('状态(0正常 1删除)');
             $table->timestamps();
         });

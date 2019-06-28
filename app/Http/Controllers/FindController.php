@@ -87,8 +87,7 @@ class FindController extends Controller
 
         $website = $this->websiteRepositry->getByUrl($url);
         if ($website) {
-            $feed->setWebsiteId($website->id);
-            $feed->setLastUpdateTime($website->last_update_time);
+            $feed->setWebsiteModel($website);
             $feed->item->saveAll();
             return redirect('/website/' . $website->id);
         }

@@ -44,11 +44,6 @@ class Website
         }
     }
 
-    private function setWebsiteId(int $id)
-    {
-        $this->feed->setWebsiteId($id);
-    }
-
     /**
      * 获取站点信息
      * @return array
@@ -85,6 +80,7 @@ class Website
             'name' => $this->info['title'],
             'logo' => $this->info['logo_url'],
             'description' => Str::limit($this->info['description'], 300),
+            'home_display' => 1
         ];
 
         $website = WebsiteModel::create($data);
@@ -92,7 +88,7 @@ class Website
             return false;
         }
 
-        $this->rss->setWebsiteId($website->id);
+        $this->rss->setWebsiteModel($website);
 
         return $website->id;
     }
