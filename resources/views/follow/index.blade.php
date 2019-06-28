@@ -96,7 +96,7 @@
                     @endif
                     @foreach ($articles as $article)
                         <li class="list-group-item py-4 px-0 article">
-                            <h5>
+                            <h5 data-website="{{ $article->website_id }}">
                                 @if ($type == 'unread' or in_array($article->id, $unreadArticleIds))
                                     <a href="/article/{{ $article->id }}?t=unread" target="_blank" class="text-dark">{{ $article->title }}</a>
                                 @else
@@ -115,7 +115,7 @@
                                 <span style="background-image:url({{ asset('/storage/cover_img/' . $article->cover_pic) }})" class="float-left cover-pic mr-3"></span>
                             @endif
 
-                            <p style="line-height:25px;{{ $article->cover_pic ? 'height:125px;' : '' }}">
+                            <p class="description" style="line-height:25px;{{ $article->cover_pic ? 'height:125px;' : '' }}" data-website="{{ $article->website_id }}">
                                 @if ($type == 'unread' or in_array($article->id, $unreadArticleIds))
                                     <a href="/article/{{ $article->id }}?t=unread" target="_blank" class="text-secondary">{{ $article->description }}</a>
                                 @else
@@ -289,6 +289,35 @@ $(function(){
                 }
             }
         });
+    });
+
+    $('.article h5, .article .description').click(function() {
+        $(this).parent().children('p:last').children('.unread-clear-one').fadeOut();
+
+        unread_num = $('#unread-' + $(this).data('website')).html();
+        if (unread_num != '...') {
+            unread_num = new Number(unread_num);
+            unread_num--;
+
+            $('#unread-' + $(this).data('website')).html(unread_num);
+            if (unread_num == 0) {
+                $('#unread-' + $(this).data('website')).addClass('d-none');
+                $('#unread-' + $(this).data('website')).parent().attr('href', '/follow?w=' + $(this).data('website'));
+            }
+        }
+
+        total_unread = $('#total-unread').html();
+        if (total_unread != '...') {
+            total_unread = new Number(total_unread);
+            total_unread--;
+
+            $('#total-unread').html(total_unread);
+
+            if (total_unread == 0) {
+                $('#total-unread').addClass('d-none');
+                $('#unread-clear').addClass('d-none');
+            }
+        }
     });
 });
 </script>
