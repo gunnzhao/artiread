@@ -143,6 +143,12 @@
                                         <i class="fa fa-clone" aria-hidden="true"></i>
                                     </a>
                                 @endif
+
+                                @if ($type == 'unread' or in_array($article->id, $unreadArticleIds))
+                                    <button type="button" class="btn btn-outline-secondary btn-sm unread-clear-one" data-website="{{ $article->website_id }}" data-article="{{ $article->id }}" data-toggle="tooltip" data-placement="top" title="标记为已读">
+                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                    </button>
+                                @endif
                             </p>
                         </li>
 
@@ -246,6 +252,43 @@ $(function(){
 
     $("#back-top").click(function() { //当点击标签的时候,使用animate在200毫秒的时间内,滚到顶部
         $("html, body").animate({scrollTop: "0px"}, 200);
+    });
+
+    $('.unread-clear-one').click(function() {
+        var _this = $(this);
+        $.post('/unread/clean', {'_token': $('input[name="_token"]').val(), 'article_id': _this.data('article')}, function(res) {
+            if (res.status == 0) {
+                _this.fadeOut();
+
+                unread_num = $('#unread-' + _this.data('website')).html();
+                if (unread_num != '...') {
+                    unread_num = new Number(unread_num);
+                    unread_num--;
+
+                    $('#unread-' + _this.data('website')).html(unread_num);
+                    if (unread_num == 0) {
+                        $('#unread-' + _this.data('website')).addClass('d-none');
+                        $('#unread-' + _this.data('website')).parent().attr('href', '/follow?w=' + _this.data('website'));
+                    }
+                }
+
+                total_unread = $('#total-unread').html();
+                if (total_unread != '...') {
+                    total_unread = new Number(total_unread);
+                    total_unread--;
+
+                    $('#total-unread').html(total_unread);
+
+                    if (total_unread == 0) {
+                        if (website_id == 0) {
+                            location.href = '/follow';
+                        } else {
+                            location.href = '/follow?w=' + website_id;
+                        }
+                    }
+                }
+            }
+        });
     });
 });
 </script>

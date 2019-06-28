@@ -121,7 +121,7 @@ $(function(){
     $('#delete-confim').click(function() {
         $.post('/bookmark/delete', {'_token': $('input[name="_token"]').val(), 'article_id': article_id}, function(res) {
             if (res.status == 0) {
-                $('#bookmark-' + article_id).hide();
+                $('#bookmark-' + article_id).fadeOut();
             }
         });
         $('#deleteBookmark').modal('hide');

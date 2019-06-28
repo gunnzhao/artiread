@@ -73,21 +73,32 @@ class UnreadController extends Controller
 
     public function clean(Request $request)
     {
+        if (!$request->has('w') and !$request->has('article_id')) {
+            return response()->json(['status' => -1, 'msg' => '请求参数有误']);
+        }
+
         $validator = Validator::make($request->all(), [
-            'w' => 'required|integer|min:0',
+            'w' => 'integer|min:0',
+            'article_id' => 'integer|min:0',
         ]);
 
         if ($validator->fails()) {
             return response()->json(['status' => -1, 'msg' => '请求参数有误']);
         }
 
-        if ($request->input('w') == 0) {
-            // 清除所有未读
-            $count = Unread::where('user_id', Auth::user()->id)->delete();
-        } else {
+        if ($request->has('article_id')) {
             $count = Unread::where([
-                ['user_id', Auth::user()->id], ['website_id', $request->input('w')]
+                ['user_id', Auth::user()->id], ['article_id', $request->input('article_id')]
             ])->delete();
+        } else {
+            if ($request->input('w') == 0) {
+                // 清除所有未读
+                $count = Unread::where('user_id', Auth::user()->id)->delete();
+            } else {
+                $count = Unread::where([
+                    ['user_id', Auth::user()->id], ['website_id', $request->input('w')]
+                ])->delete();
+            }
         }
 
         return response()->json(['status' => 0, 'data' => ['count' => $count]]);
